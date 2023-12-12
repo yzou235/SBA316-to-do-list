@@ -54,7 +54,7 @@ body {
     border: solid 10px #a8c023;
 }
 
-.button {
+button {
     padding: 0.5rem;
     border: none;
     text-decoration: none;
@@ -65,6 +65,16 @@ body {
     font-weight: bold;
 }
 
-.button:hover {
+button:hover {
     padding: 1rem;
+}
+
+.todoList {
+    text-align: left;
+    padding-left: 4rem;
+}
+
+.todoList li {
+    position: relative;
+    padding: 0.5rem;
 }
