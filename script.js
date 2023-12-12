@@ -1,10 +1,6 @@
-let todoArray = [];
-let deleTasks;
-let editTasks;
-
 const form = document.querySelector(".form");
 const input = document.querySelector("#todo");
-const ul = document.querySelector(".todoList");
+const list = document.getElementById("list");
 const button = document.getElementById("add");
 
 // Add task:
@@ -19,13 +15,25 @@ button.addEventListener("click", function(){
     }
 
     //create new list item
-    const li = document.createElement("li");
-    li.innerHTML = `<span>${inputValue}</span>`;
-    console.log(li);
+    const newTask = document.createElement("newTask");
+    newTask.innerHTML = 
+        `<div class="task">
+            <input type="checkbox" class="task-check" style="transform:scale(3)">
+            <span style="font-size:32pt; margin-left:25px;">${inputValue}</span>
+            <button class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+            <button class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div>`;
 
     //append to uk
-    ul.appendChild(li);
+    list.appendChild(newTask);
 
     //clear input field
     input.value="";
+
+    /////////delete a task
+
+    // delete a task
+    
+
+
 });
