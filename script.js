@@ -30,10 +30,5 @@ button.addEventListener("click", function(){
     //clear input field
     input.value="";
 
-    /////////delete a task
-
-    // delete a task
-    
-
-
 });
+
