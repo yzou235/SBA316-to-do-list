@@ -30,5 +30,18 @@ button.addEventListener("click", function(){
     //clear input field
     input.value="";
 
+    ///////////////////////////////////////////////////////////
+
+    // delete button
+    const deleteButtons = document.querySelectorAll(".delete");
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function(){
+            button.parentNode.remove();
+        })
+    })
+
+    // edit button
+    
+
 });
 
