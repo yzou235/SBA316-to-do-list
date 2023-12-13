@@ -66,13 +66,17 @@ button {
     font-weight: bold;
 }
 
-button:hover {
+#add:hover {
     padding: 1rem;
 }
 
 #list {
     text-align: left;
     padding-left: 3rem;
+}
+
+#delete {
+
 }
 
 

@@ -20,7 +20,7 @@ button.addEventListener("click", function(){
         `<div class="task">
             <input type="checkbox" class="task-check" style="transform:scale(3)">
             <span style="font-size:32pt; margin-left:25px;">${inputValue}</span>
-            <button class="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>`;
 
     //append to uk
@@ -59,7 +59,7 @@ button.addEventListener("click", function(){
             let inputValue = event.target.value;
             if(event.target.value.length > 0 && (event.keyCode === 13 || event.type === "click")) {
                 // newTask.addEventListener("click", toggleDone);
-                newTask.addEventListener("dblclick", editItem);
+                // newTask.addEventListener("dblclick", editItem);
                 newTask.textContent = event.target.value;
                 event.target.parentNode.prepend(newTask);
                 event.target.remove();
