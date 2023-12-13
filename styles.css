@@ -76,3 +76,18 @@ button {
 }
 
 
+.task {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.task span {
+    flex-grow: 1;
+    font-size: 32pt; 
+    margin-left:35px;
+}
+
+.task .task-check {
+    transform:scale(2.5);
+}

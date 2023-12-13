@@ -18,8 +18,8 @@ button.addEventListener("click", function(){
     const newTask = document.createElement("newTask");
     newTask.innerHTML = 
         `<div class="task">
-            <input type="checkbox" class="task-check" style="transform:scale(3)">
-            <span style="font-size:32pt; margin-left:25px;">${inputValue}</span>
+            <input type="checkbox" class="task-check">
+            <span>${inputValue}</span>
             <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>`;
 
@@ -39,33 +39,33 @@ button.addEventListener("click", function(){
         })
     })
 
-    // double click to edit
-    //note: I googled it but the code still doesn't work. I can edit the item but cannot save it. 
-    // Most of the answers on google mentioned using React.
-    newTask.addEventListener("dblclick", function(event){
-        let item = event.target.textContent;
-        let itemInput = document.createElement("input");
-        itemInput.type = "text";
-        itemInput.value = item;
-        itemInput.classList.add('edit');
-        itemInput.addEventListener('keypress', saveItem);
-        itemInput.addEventListener('blur', saveItem);
-        event.target.parentNode.prepend(itemInput);
-        event.target.remove();
-        itemInput.select();
+    // // double click to edit
+    // //note: I googled it but the code still doesn't work. I can edit the item but cannot save it. 
+    // // Most of the answers on google mentioned using React.
+    // newTask.addEventListener("dblclick", function(event){
+    //     let item = event.target.textContent;
+    //     let itemInput = document.createElement("input");
+    //     itemInput.type = "text";
+    //     itemInput.value = item;
+    //     itemInput.classList.add('edit');
+    //     itemInput.addEventListener('keypress', saveItem);
+    //     itemInput.addEventListener('blur', saveItem);
+    //     event.target.parentNode.prepend(itemInput);
+    //     event.target.remove();
+    //     itemInput.select();
 
-        //save item
-        function saveItem(event) {
-            let inputValue = event.target.value;
-            if(event.target.value.length > 0 && (event.keyCode === 13 || event.type === "click")) {
-                // newTask.addEventListener("click", toggleDone);
-                // newTask.addEventListener("dblclick", editItem);
-                newTask.textContent = event.target.value;
-                event.target.parentNode.prepend(newTask);
-                event.target.remove();
-            }
-        }
-    })
+    //     //save item
+    //     function saveItem(event) {
+    //         let inputValue = event.target.value;
+    //         if(event.target.value.length > 0 && (event.keyCode === 13 || event.type === "click")) {
+    //             // newTask.addEventListener("click", toggleDone);
+    //             // newTask.addEventListener("dblclick", editItem);
+    //             newTask.textContent = event.target.value;
+    //             event.target.parentNode.prepend(newTask);
+    //             event.target.remove();
+    //         }
+    //     }
+    // })
 
 });
 
