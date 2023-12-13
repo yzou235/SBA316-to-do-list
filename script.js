@@ -47,33 +47,34 @@ button.addEventListener("click", function(){
         })
     })
 
-    // // double click to edit
-    // //note: I googled it but the code still doesn't work. I can edit the item but cannot save it. 
-    // // Most of the answers on google mentioned using React.
-    // newTask.addEventListener("dblclick", function(event){
-    //     let item = event.target.textContent;
-    //     let itemInput = document.createElement("input");
-    //     itemInput.type = "text";
-    //     itemInput.value = item;
-    //     itemInput.classList.add('edit');
-    //     itemInput.addEventListener('keypress', saveItem);
-    //     itemInput.addEventListener('blur', saveItem);
-    //     event.target.parentNode.prepend(itemInput);
-    //     event.target.remove();
-    //     itemInput.select();
+    // edit button
+    const editButtons = document.querySelectorAll(".edit");
+    editButtons.forEach(button => {
+        button.addEventListener("click", function(event){
+            let targetEl = event.target;
+            const spanEl = targetEl.previousElementSibling;
+            // here I encountered a problem and I don't why this if code would fix it.
+            if (!spanEl) {
+                console.error("Error: Unable to find spanElement");
+                return;
+            }
+            const currentText = spanEl.innerText;
+            const editInput = document.createElement("input");
+            editInput.type = "text";
+            editInput.value = currentText;
+            spanEl.replaceWith(editInput);
+            editInput.focus();
+            editInput.addEventListener("blur", function(){
+                const editedValue = editInput.value.trim();
+                if(editedValue) {
+                    spanEl.innerText = editedValue;
+                }
+                editInput.replaceWith(spanEl);
+            });
+        })
+    })
 
-    //     //save item
-    //     function saveItem(event) {
-    //         let inputValue = event.target.value;
-    //         if(event.target.value.length > 0 && (event.keyCode === 13 || event.type === "click")) {
-    //             // newTask.addEventListener("click", toggleDone);
-    //             // newTask.addEventListener("dblclick", editItem);
-    //             newTask.textContent = event.target.value;
-    //             event.target.parentNode.prepend(newTask);
-    //             event.target.remove();
-    //         }
-    //     }
-    // })
+    
 
 });
 

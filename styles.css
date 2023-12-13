@@ -96,3 +96,7 @@ button:hover {
 .task .edit {
     margin-right: 10pt;
 }
+
+input {
+    outline: none;
+}
