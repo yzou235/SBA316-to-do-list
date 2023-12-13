@@ -66,7 +66,7 @@ button {
     font-weight: bold;
 }
 
-#add:hover {
+button:hover {
     padding: 1rem;
 }
 
@@ -80,6 +80,7 @@ button {
     display: flex;
     justify-content: space-between; 
     align-items: center;
+    width: 835px;
 }
 
 .task span {
@@ -90,4 +91,8 @@ button {
 
 .task .task-check {
     transform:scale(2.5);
+}
+
+.task .edit {
+    margin-right: 10pt;
 }

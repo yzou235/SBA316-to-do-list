@@ -20,6 +20,7 @@ button.addEventListener("click", function(){
         `<div class="task">
             <input type="checkbox" class="task-check">
             <span>${inputValue}</span>
+            <button class="edit" id="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
             <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>`;
 
@@ -30,6 +31,13 @@ button.addEventListener("click", function(){
     input.value="";
 
     ///////////////////////////////////////////////////////////
+
+    // checkbox and strikethrough
+    const checkbox = newTask.querySelector(".task-check");
+    checkbox.addEventListener("change", function() {
+        const spanElement = newTask.querySelector("span");
+        spanElement.style.textDecoration = checkbox.checked ? "line-through" : "none";
+    });
 
     // delete button
     const deleteButtons = document.querySelectorAll(".delete");
