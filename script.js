@@ -46,37 +46,6 @@ button.addEventListener("click", function(){
         })
     })
 
-    // edit button - first try
-    // const editButtons = document.querySelectorAll(".edit");
-    // editButtons.forEach(button => {
-    //     button.addEventListener("click", function(event){
-    //         let targetEl = event.target.parentNode;
-    //         console.log(targetEl);
-    //         const spanEl = targetEl.previousElementSibling;
-    //         console.log(spanEl);
-    //         const parentOfSpan = spanEl.parentNode;
-    //         // here I encountered a problem and I don't why this if code would fix it.
-    //         if (!spanEl) {
-    //             console.error("Error: Unable to find spanElement");
-    //             return;
-    //         }
-    //         const currentText = spanEl.innerText;
-    //         console.log(currentText);
-    //         const editInput = document.createElement("input");
-    //         editInput.type = "text";
-    //         editInput.value = currentText;
-    //         spanEl.replaceWith(editInput);
-    //         editInput.focus();
-    //         editInput.addEventListener("blur", function(){
-    //             const editedValue = editInput.value.trim();
-    //             if(editedValue) {
-    //                 spanEl.innerText = editedValue;
-    //             }
-    //             parentOfSpan.replaceChild(spanEl, editInput);
-    //         });
-    //     })
-    // })
-
     // edit button - second try
     const editButtons = document.querySelectorAll(".edit");
     editButtons.forEach(button => {
@@ -103,15 +72,7 @@ button.addEventListener("click", function(){
                     `
                 })
             }
-            // if (update) {
-            //     let updatedValue = event.target.previousElementSibling.value;
-            //     event.target.parentElement.innerHTML = `
-            //     <input type="checkbox" class="task-check">
-            //     <span>${updatedValue}</span>
-            //     <button class="edit" id="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-            //     <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
-            //     `;
-            // }
+
         })
     })
 
