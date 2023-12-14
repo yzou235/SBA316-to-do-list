@@ -52,7 +52,7 @@ body {
 
 .form-input:focus {
     outline: none;
-    border: solid 10px #a8c023;
+    border: solid 7px #a8c023;
 }
 
 button {
@@ -67,8 +67,13 @@ button {
 }
 
 button:hover {
-    padding: 1rem;
+    background-color: #23a8c0;
 }
+
+#add:hover {
+    padding: 0.7rem;
+}
+
 
 #list {
     text-align: left;
@@ -81,6 +86,7 @@ button:hover {
     justify-content: space-between; 
     align-items: center;
     width: 835px;
+    margin-bottom: 20px;
 }
 
 .task span {
@@ -99,4 +105,17 @@ button:hover {
 
 input {
     outline: none;
+}
+
+.update-btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #a8c023;
+    color: black;
+}
+
+.update-btn:hover {
+    padding: 0.7rem;
+    background-color: #23a8c0;
 }

@@ -15,15 +15,14 @@ button.addEventListener("click", function(){
     }
 
     //create new list item
-    const newTask = document.createElement("newTask");
+    const newTask = document.createElement("div");
+    newTask.classList.add("task");
     newTask.innerHTML = 
-        `<div class="task">
-            <input type="checkbox" class="task-check">
+        `   <input type="checkbox" class="task-check">
             <span>${inputValue}</span>
             <button class="edit" id="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-            <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
-        </div>`;
-
+            <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>`;
+        
     //append to uk
     list.appendChild(newTask);
 
@@ -47,34 +46,75 @@ button.addEventListener("click", function(){
         })
     })
 
-    // edit button
+    // edit button - first try
+    // const editButtons = document.querySelectorAll(".edit");
+    // editButtons.forEach(button => {
+    //     button.addEventListener("click", function(event){
+    //         let targetEl = event.target.parentNode;
+    //         console.log(targetEl);
+    //         const spanEl = targetEl.previousElementSibling;
+    //         console.log(spanEl);
+    //         const parentOfSpan = spanEl.parentNode;
+    //         // here I encountered a problem and I don't why this if code would fix it.
+    //         if (!spanEl) {
+    //             console.error("Error: Unable to find spanElement");
+    //             return;
+    //         }
+    //         const currentText = spanEl.innerText;
+    //         console.log(currentText);
+    //         const editInput = document.createElement("input");
+    //         editInput.type = "text";
+    //         editInput.value = currentText;
+    //         spanEl.replaceWith(editInput);
+    //         editInput.focus();
+    //         editInput.addEventListener("blur", function(){
+    //             const editedValue = editInput.value.trim();
+    //             if(editedValue) {
+    //                 spanEl.innerText = editedValue;
+    //             }
+    //             parentOfSpan.replaceChild(spanEl, editInput);
+    //         });
+    //     })
+    // })
+
+    // edit button - second try
     const editButtons = document.querySelectorAll(".edit");
     editButtons.forEach(button => {
         button.addEventListener("click", function(event){
-            let targetEl = event.target;
-            const spanEl = targetEl.previousElementSibling;
-            // here I encountered a problem and I don't why this if code would fix it.
-            if (!spanEl) {
-                console.error("Error: Unable to find spanElement");
-                return;
+            const target = event.target.classList.contains("edit");
+            const update = event.target.classList.contains("update");
+            // console.log(event.target.parentElement.innerHTML);
+            if (target) {
+                let val = event.target.previousSibling.previousSibling.innerHTML; //one previousSibling will take us to the text node
+                event.target.parentElement.innerHTML = `
+                    <input type="text" class="form-input" id="todo" name="todo" value="${val}">
+                    <input type="submit" value="update" class="update-btn">
+                `;
+
+                const updateBtn = document.querySelector(".update-btn");
+                updateBtn.addEventListener("click", function(updateEvent){
+                    const updatedValue = updateEvent.target.previousElementSibling.value;
+                    console.log(updatedValue);
+                    updateEvent.target.parentElement.innerHTML = `
+                        <input type="checkbox" class="task-check">
+                        <span>${updatedValue}</span>
+                        <button class="edit" id="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                        <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    `
+                })
             }
-            const currentText = spanEl.innerText;
-            const editInput = document.createElement("input");
-            editInput.type = "text";
-            editInput.value = currentText;
-            spanEl.replaceWith(editInput);
-            editInput.focus();
-            editInput.addEventListener("blur", function(){
-                const editedValue = editInput.value.trim();
-                if(editedValue) {
-                    spanEl.innerText = editedValue;
-                }
-                editInput.replaceWith(spanEl);
-            });
+            // if (update) {
+            //     let updatedValue = event.target.previousElementSibling.value;
+            //     event.target.parentElement.innerHTML = `
+            //     <input type="checkbox" class="task-check">
+            //     <span>${updatedValue}</span>
+            //     <button class="edit" id="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+            //     <button class="delete" id="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            //     `;
+            // }
         })
     })
 
-    
 
 });
 
